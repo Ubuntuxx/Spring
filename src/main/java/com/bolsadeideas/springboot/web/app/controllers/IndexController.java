@@ -1,5 +1,6 @@
 package com.bolsadeideas.springboot.web.app.controllers;
 
+import com.bolsadeideas.springboot.web.app.models.Usuario;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,5 +15,13 @@ public class IndexController {
     public String index(Model model){
         model.addAttribute("titulo","Bienvenido a spring");
         return "index";
+    }
+
+    @GetMapping("/perfil")
+    public String perfil(Model model){
+        Usuario usuario = new Usuario("Luis","Amador");
+        model.addAttribute("nombre", usuario);
+        model.addAttribute("titulo","Perfil de usuario: " + usuario.getNombre());
+        return "perfil";
     }
 }
